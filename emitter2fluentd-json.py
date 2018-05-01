@@ -14,8 +14,6 @@ args = parser.parse_args()
 host = args.host if args.host else 'localhost'
 port = args.port if args.port else 24224
 
-# create a fluent-logger object
-logger = sender.FluentSender('', host=host, port=port)
 
 # only when a log-file is specified
 if args.file:
@@ -32,7 +30,8 @@ if args.file:
         del line_json['time']
         record = line_json
         if is_first:
-            logger.emit_with_time(tag, int(time.time()), record)
+            logger = sender.FluentSender(tag, host=host, port=port)
+            logger.emit_with_time('', int(time.time()), record)
             is_first = False
             p_time = c_time # 次のために取っておく
         else:
@@ -45,10 +44,11 @@ if args.file:
             counter = 0
             while timegap > counter:
                 counter = int(time.time()) - start
-                print(counter)
+                # print(counter)
                 time.sleep(0.1)
-            logger.emit_with_time(tag, int(time.time()), record)
+            # create a fluent-logger object
+            logger = sender.FluentSender(tag, host=host, port=port)
+            logger.emit_with_time('', int(time.time()), record)
             p_time = c_time
 else:
     print("specify a path of your json-type logfile.")
-    

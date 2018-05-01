@@ -2,6 +2,13 @@
 
 I'm developing this to help you take your hassle out of the process of testing and debugging fluentd. Once you created a sample log file as shown below, you can recycle the data in your log file again and again with just one command-line execution!
 
+## For your quick try
+
+```
+python emitter2fluentd-json.py -f sample.log
+```
+*fluentd must be running on your local environment
+
 ## How to create a sample log file
 
 Add this to your fluentd configuration file and you'll see your log file at your ./log/json. The filename will be like ```buffer.**.log```

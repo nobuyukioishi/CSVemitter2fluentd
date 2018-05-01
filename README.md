@@ -7,7 +7,7 @@ I'm developing this to help you take your hassle out of the process of testing a
 ```
 python emitter2fluentd-json.py -f sample.log
 ```
-*fluentd must be running on your local environment
+*fluentd should be running on your local environment to check the result
 
 ## How to create a sample log file
 

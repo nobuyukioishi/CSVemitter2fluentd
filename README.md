@@ -22,12 +22,15 @@ After creating your sample log file, you'll be able to emit fluentd events as ma
 
 ```
 python emitter2fluentd-json.py -f path2yourlogfile --host 9199 --port localhost
+```
 
-# help message
+Tag emission interval will be calculated from the log file to reproduce the same condition as you created the log file.
+
+
+### help message
+```
 -h, --help            show this help message and exit
 -f FILE, --file FILE  set the filepath to be loaded
 --host HOST           set the host address where fluentd is working
 --port PORT           set the port number where fluentd is working
 ```
-
-Tag emission interval will be calculated from the log file to reproduce the same condition as you created the log file.
